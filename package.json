@@ -1,0 +1,22 @@
+{
+  "name": "adventcode21",
+  "version": "1.0.0",
+  "description": "Advent of Code 2021",
+  "main": "index.js",
+  "scripts": {
+    "test": "jest"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/fredsson/adventcode21.git"
+  },
+  "author": "Fredrik Andersson <fredrik@piktiv.se>",
+  "license": "GPL-2.0-only",
+  "bugs": {
+    "url": "https://github.com/fredsson/adventcode21/issues"
+  },
+  "homepage": "https://github.com/fredsson/adventcode21#readme",
+  "devDependencies": {
+    "jest": "^27.4.4"
+  }
+}
