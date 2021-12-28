@@ -35,6 +35,9 @@ let minCost = Infinity;
 let winner = undefined;
 while(bag.size()) {
   const state = bag.pop();
+  if (state.totalCost >= minCost) {
+    continue;
+  }
 
   const nextGrid = state.grid.swap({x: state.pod.x, y: state.pod.y}, state.spot);
   if (nextGrid.solved()) {
@@ -50,7 +53,7 @@ while(bag.size()) {
     ...m,
     grid: nextGrid,
     totalCost: state.totalCost + m.cost,
-  })).filter(s => s.totalCost <= minCost).forEach(s => bag.push(s));
+  })).filter(s => s.totalCost < minCost).forEach(s => bag.push(s));
 }
 
 console.log('------');

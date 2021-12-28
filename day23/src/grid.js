@@ -99,6 +99,7 @@ function findPathsToGoal(pod, grid, width) {
 }
 
 function getPossibleMovesWithCost(amphipods, availableSpots, grid, width) {
+  let endGoalIsBlocked = false;
   return amphipods
     .filter(pod => {
       const notInCorrectColumn = pod.x !== TARGET_COLUMN_BY_POD_TYPE[pod.t];
@@ -108,18 +109,20 @@ function getPossibleMovesWithCost(amphipods, availableSpots, grid, width) {
 
       const neighbor = grid[((pod.y+1)*width)+pod.x];
       if (neighbor === '.') {
+        endGoalIsBlocked = true;
         return false;
       }
       const neighborIsWrongType = pod.y === 2 && neighbor !== pod.t;
       return neighborIsWrongType;
     })
     .map(pod => {
+      if (endGoalIsBlocked) {
+        return [];
+      }
       if (pod.y === 1) {
         return findPathsToGoal(pod, grid, width);
       }
-
       const goalSpots = findPathsToGoal(pod, grid, width);
-
       return goalSpots.concat(availableSpots.map(spot => {
         const path = findPath({x: pod.x, y: pod.y}, spot, grid, width);
         if (!path) {
