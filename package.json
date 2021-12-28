@@ -18,5 +18,9 @@
   "homepage": "https://github.com/fredsson/adventcode21#readme",
   "devDependencies": {
     "jest": "^27.4.4"
+  },
+  "dependencies": {
+    "heap": "^0.2.7",
+    "pathfinding": "^0.4.18"
   }
 }
